@@ -2,111 +2,76 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#4b22d6">
-<title>سحبة | مسابقات صنّاع المحتوى</title>
+<title>سحبة | سحوبات حقيقية</title>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f4f1fb;--card:#fff;--tx:#1b1035;--mu:#6c6488;--pr:#4b22d6;--pr-hover:#3a18b0;
-  --ac:#ffc934;--bd:#e3dcf5;--ok:#0f9d6b;--err:#d63b3b;
-  box-sizing:border-box;
-}
-*{box-sizing:border-box}
+:root{--bg:#f4f1fb;--card:#fff;--tx:#1b1035;--mu:#6c6488;--pr:#4b22d6;--ac:#ffc934;--bd:#e3dcf5;--err:#d63b3b}
+@media(prefers-color-scheme:dark){:root{--bg:#120c24;--card:#1d1537;--tx:#f2eeff;--mu:#a79ec6;--bd:#33284f}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:"Readex Pro",Tahoma,sans-serif;line-height:1.6}
-#app{max-width:480px;margin:0 auto;padding:16px 16px 110px;min-height:100vh;display:flex;flex-direction:column}
-h1,h2,h3,p{margin:0}
-
-/* Top App Header */
+h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}
+#app{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 110px;min-height:100vh}
 .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.brand{font-weight:700;font-size:24px;color:var(--pr);display:flex;align-items:center;gap:6px}
-
-/* Buttons & Inputs */
-.btn{display:block;width:100%;border:0;border-radius:16px;padding:16px;font:inherit;font-weight:600;font-size:16px;background:var(--pr);color:#fff;cursor:pointer;margin-top:12px;text-align:center;box-shadow:0 4px 15px rgba(75,34,214,0.2);transition:.2s}
-.btn:hover{background:var(--pr-hover)}
-.btn.alt{background:var(--ac);color:#1b1035;box-shadow:0 4px 15px rgba(255,201,52,0.2)}
-.btn.red{background:var(--err);color:#fff}
-.btn:disabled{opacity:.5;cursor:default}
-input,textarea{width:100%;border:1.5px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:14px;font:inherit;font-size:16px;margin-top:6px}
-input:focus,textarea:focus{outline:3px solid var(--ac);outline-offset:2px}
+.brand{font-weight:700;font-size:24px;color:var(--pr)}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:15px;font:inherit;font-weight:600;font-size:16px;background:var(--pr);color:#fff;cursor:pointer;margin-top:12px;text-align:center}
+.btn:active{transform:scale(.98)}
+.btn.alt{background:var(--ac);color:#1b1035}.btn.red{background:var(--err)}.btn:disabled{opacity:.5}
+.btn.sm{width:auto;display:inline-block;padding:8px 16px;font-size:13px;margin:0 0 12px}
+input,textarea{width:100%;border:1.5px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:13px;font:inherit;font-size:16px;margin-top:6px}
+input:focus,textarea:focus{outline:3px solid var(--ac);outline-offset:1px}
 label{font-size:14px;color:var(--mu);display:block;margin-top:12px}
-
-/* Welcome Screen */
-.welcome-hero{text-align:center;padding:40px 0 20px}
-.welcome-hero h1{font-size:32px;color:var(--pr);margin-bottom:10px}
-.welcome-hero p{color:var(--mu);font-size:15px}
-
-/* Avatar Selection */
-.avatar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-.avatar-option{background:var(--card);border:2px solid var(--bd);border-radius:20px;padding:15px;text-align:center;font-size:36px;cursor:pointer;transition:.2s}
-.avatar-option.selected{border-color:var(--pr);background:#ede7ff;transform:scale(1.05)}
-
-/* Search Bar */
-.search-box{position:relative;margin-bottom:16px}
-.search-box input{padding-right:40px;border-radius:99px;background:var(--card)}
-.search-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--mu);font-size:16px}
-
-/* Grid & Cards */
+.hero{text-align:center;padding:48px 0 16px}.hero h1{font-size:30px;color:var(--pr);margin:12px 0 8px}.hero p{color:var(--mu);font-size:15px}
+.avatars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.av{background:var(--card);border:2px solid var(--bd);border-radius:20px;padding:14px;text-align:center;font-size:36px;cursor:pointer}
+.av.on{border-color:var(--pr);transform:scale(1.05)}
+.search{margin-bottom:16px}.search input{border-radius:99px;margin:0}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(75,34,214,0.04);display:flex;flex-direction:column;cursor:pointer;transition:.2s}
-.card:hover{transform:translateY(-2px)}
-.card-img{height:130px;background:var(--bd);display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden}
-.card-img img{width:100%;height:100%;object-fit:cover}
-.card-body{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
-.card-title{font-size:15px;font-weight:700;line-height:1.3}
-.card-by{color:var(--mu);font-size:12px}
-.badge{background:var(--ac);color:#1b1035;border-radius:99px;padding:3px 10px;font-size:11px;font-weight:600;display:inline-block;width:fit-content;margin-top:4px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.cimg{height:120px;background:var(--bd);display:flex;align-items:center;justify-content:center;font-size:36px}
+.cimg img,.banner img{width:100%;height:100%;object-fit:cover}
+.cb{padding:12px;display:flex;flex-direction:column;gap:4px}
+.ct{font-size:15px;font-weight:700;line-height:1.3}.by{color:var(--mu);font-size:12px}
+.badge{background:var(--ac);color:#1b1035;border-radius:99px;padding:3px 10px;font-size:11px;font-weight:600;width:fit-content}
 .badge.done{background:var(--bd);color:var(--mu)}
-
-/* Details View */
-.details-banner{height:200px;background:var(--bd);border-radius:20px;overflow:hidden;margin-bottom:16px;display:flex;align-items:center;justify-content:center;font-size:64px}
-.details-banner img{width:100%;height:100%;object-fit:cover}
-.ticket{position:relative;background:var(--ac);color:#1b1035;border-radius:20px;padding:20px;text-align:center;margin-top:14px;box-shadow:0 4px 15px rgba(255,201,52,0.3)}
-.ticket small{display:block;font-size:13px;opacity:.8}
-.ticket b{display:block;font-size:38px;letter-spacing:4px;line-height:1.2;direction:ltr;margin-top:4px}
-.win-box{background:var(--card);border:2px solid var(--ac);border-radius:18px;padding:16px;text-align:center;margin-top:14px}
-.win-box b{direction:ltr;display:inline-block;color:var(--pr)}
-
-/* Profile & Stats */
+.banner{height:200px;background:var(--bd);border-radius:20px;overflow:hidden;margin-bottom:16px;display:flex;align-items:center;justify-content:center;font-size:64px}
+.ticket{background:var(--ac);color:#1b1035;border-radius:20px;padding:20px;text-align:center;margin-top:14px}
+.ticket b{display:block;font-size:38px;letter-spacing:4px;direction:ltr}
+.win{background:var(--card);border:2px solid var(--ac);border-radius:18px;padding:16px;text-align:center;margin-top:14px}
+.note{text-align:center;margin-top:12px;padding:10px;border-radius:14px;background:var(--bd);color:var(--mu);font-size:14px}
 .stats{display:flex;gap:10px;margin-bottom:16px}
 .stat{flex:1;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 8px;text-align:center}
-.stat b{display:block;font-size:22px;color:var(--pr);line-height:1.2}
-.stat small{color:var(--mu);font-size:11px}
-.profile-header{text-align:center;padding:16px 0}
-.avatar{width:80px;height:80px;background:var(--pr);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 10px;overflow:hidden;box-shadow:0 4px 15px rgba(75,34,214,0.3)}
-.avatar img{width:100%;height:100%;object-fit:cover}
-
-/* Panel */
-.panel{background:var(--card);border:1.5px dashed var(--pr);border-radius:20px;padding:16px;margin-bottom:16px;display:none}
-
-/* Bottom Navigation (Strictly at Bottom) */
-.nav{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:var(--card);border-top:1px solid var(--bd);border-radius:24px 24px 0 0;display:flex;padding:10px 12px calc(env(safe-area-inset-bottom, 0px) + 10px);box-shadow:0 -4px 20px rgba(0,0,0,0.08);z-index:10}
-.nav button{flex:1;background:none;border:0;color:var(--mu);font:inherit;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px;transition:.2s}
-.nav button span{font-size:22px}
-.nav button.on{color:var(--pr);font-weight:700}
+.stat b{display:block;font-size:22px;color:var(--pr)}.stat small{color:var(--mu);font-size:11px}
+.me{text-align:center;padding:12px 0}
+.avatar{width:80px;height:80px;background:var(--pr);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 10px}
 .empty{text-align:center;color:var(--mu);padding:40px 0;grid-column:1/-1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px}
+.wl{padding:14px;margin-bottom:10px}
+#nav{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:var(--card);border-top:1px solid var(--bd);border-radius:24px 24px 0 0;display:none;padding:10px 12px calc(env(safe-area-inset-bottom,0px) + 10px);z-index:10}
+#nav a{flex:1;color:var(--mu);font-size:12px;display:flex;flex-direction:column;align-items:center}
+#nav a span{font-size:22px}#nav a.on{color:var(--pr);font-weight:700}
+#toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:12px 20px;border-radius:99px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:20;max-width:90%;text-align:center}
+#toast.show{opacity:1}
+.spin{width:40px;height:40px;border:4px solid var(--bd);border-top-color:var(--pr);border-radius:50%;margin:30vh auto 0;animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
-
-<div id="app">
-  <!-- Dynamic Views Container -->
-  <main id="mainContainer" style="flex:1"></main>
-
-  <!-- Bottom Navigation Bar (Appears only inside the app) -->
-  <nav class="nav" id="bottomNav" style="display:none">
-    <button id="navHome" class="on" onclick="switchView('home')"><span>🏠</span>الرئيسية</button>
-    <button id="navWallet" onclick="switchView('wallet')"><span>🎟️</span>مشاركاتي</button>
-    <button id="navProfile" onclick="switchView('profile')"><span>👤</span>حسابي</button>
-  </nav>
-</div>
+<div id="app"><main id="main"></main></div>
+<nav id="nav">
+  <a href="#/home" id="n-home"><span>🏠</span>الرئيسية</a>
+  <a href="#/wallet" id="n-wallet"><span>🎟️</span>مشاركاتي</a>
+  <a href="#/profile" id="n-profile"><span>👤</span>حسابي</a>
+</nav>
+<div id="toast"></div>
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getFirestore, doc, getDoc, setDoc, getDocs, addDoc, updateDoc, deleteDoc, writeBatch, collection, onSnapshot, query, orderBy, serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,getDocs,addDoc,updateDoc,deleteDoc,writeBatch,collection,onSnapshot,query,orderBy,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-const app = initializeApp({
+const app=initializeApp({
   apiKey:"AIzaSyATHhHkoy7w6x8ht4NqxPysX3q8WC7DmiE",
   authDomain:"sahbaha-f7f8b.firebaseapp.com",
   projectId:"sahbaha-f7f8b",
@@ -114,372 +79,192 @@ const app = initializeApp({
   messagingSenderId:"434766319310",
   appId:"1:434766319310:web:30f2d72869325be34fca9f"
 });
+const auth=getAuth(app),db=getFirestore(app);
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rnd=()=>crypto.getRandomValues(new Uint32Array(1))[0];
+const fmt=ms=>new Date(ms).toLocaleString("ar-EG",{dateStyle:"medium",timeStyle:"short"});
+const AVATARS=["🐼","👧","👦","🦖","🐻","🤖","🐰","🦊","🦁"];
 
-const auth = getAuth(app), db = getFirestore(app);
-const ADMIN = "mahranasyed@gmail.com";
-const $ = id => document.getElementById(id);
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const rnd = () => crypto.getRandomValues(new Uint32Array(1))[0];
-const fmt = ms => new Date(ms).toLocaleString("ar-EG",{dateStyle:"medium",timeStyle:"short"});
+let user=null,profile=null,isOrg=false,raffles=[],joined={},authReady=false,dataReady=false,kw="",pick="🐼",unsubJ=null;
 
-let user = null, userProfile = null, raffles = [], joined = [], codes = {}, currentView = "welcome", selectedRaffleId = null, unsubJoined = null, searchKeyword = "", selectedAvatar = "🐼";
+const route=()=>{const h=location.hash.replace(/^#\/?/,"").split("/");return{p:h[0]||"home",id:h[1]}};
+const go=h=>{location.hash=h};
+let tt;const toast=m=>{const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2600)};
+const isOpen=r=>r.status==="open";
+const left=t=>{const s=Math.max(0,Math.floor((t-Date.now())/1e3)),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return s?`⏳ ${d?d+" يوم ":""}${h} س ${m} د ${s%60} ث`:"انتهى الوقت"};
+const isDue=r=>Date.now()>=(r.endsAt||0);
+const img=r=>/^https:\/\//.test(r.image||"")?`<img src="${esc(r.image)}" alt="" loading="lazy">`:"🎁";
 
-window.switchView = (v) => {
-  currentView = v;
-  renderApp();
-};
+function card(r){
+  const live=isOpen(r)&&!isDue(r);
+  return `<a class="card" href="#/raffle/${r.id}"><div class="cimg">${img(r)}</div><div class="cb">
+    <div class="ct">${esc(r.title)}</div><div class="by">بواسطة: ${esc(r.by||r.ownerName)}</div>
+    <span class="badge ${live?"":"done"}">${live?"سحب نشط":"انتهى"}</span></div></a>`;
+}
+function listHTML(){
+  const f=raffles.filter(r=>!kw||r.title.toLowerCase().includes(kw)||(r.by||"").toLowerCase().includes(kw));
+  return f.length?f.map(card).join(""):'<div class="empty">لا توجد مسابقات حاليًا 🎈</div>';
+}
 
-window.openDetails = (id) => {
-  selectedRaffleId = id;
-  switchView('details');
-};
-
-window.filterRaffles = (kw) => {
-  searchKeyword = kw.trim().toLowerCase();
-  renderHomeContent();
-};
-
-window.selectAvatar = (av) => {
-  selectedAvatar = av;
-  document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
-};
-
-window.saveAvatarAndEnter = async () => {
-  if (!user) return;
-  try {
-    await setDoc(doc(db, "users", user.uid), {
-      avatar: selectedAvatar,
-      displayName: user.displayName || "مستخدم",
-      email: user.email,
-      createdAt: serverTimestamp()
-    }, {merge: true});
-    userProfile = { avatar: selectedAvatar };
-    switchView('home');
-  } catch(e) {
-    alert("حدث خطأ، حاول مرة أخرى");
-  }
-};
-
-function renderApp() {
-  const container = $("mainContainer");
-  const bottomNav = $("bottomNav");
-
-  if (!user) {
-    bottomNav.style.display = "none";
-    container.innerHTML = `
-      <div class="welcome-hero">
-        <div style="font-size:72px;margin-bottom:16px">🎁</div>
-        <h1>رحلتك مع المكافآت تبدأ هنا</h1>
-        <p>مسابقات صنّاع المحتوى الحقيقية، سجّل بحساب جوجل وشارك لتربح بكل سهولة.</p>
-      </div>
-      <button class="btn alt" style="margin-top:40px" onclick="loginWithGoogle()">تسجيل الدخول بجوجل 🚀</button>
-    `;
+function render(force){
+  const a=document.activeElement;
+  if(!force&&a&&/INPUT|TEXTAREA/.test(a.tagName)&&$("main").contains(a))return; // لا تمسح اللي المستخدم بيكتبه
+  const m=$("main"),nav=$("nav"),{p,id}=route();
+  if(!authReady||!dataReady){nav.style.display="none";m.innerHTML='<div class="spin"></div>';return}
+  if(!user){
+    nav.style.display="none";
+    m.innerHTML=`<div class="hero"><div style="font-size:72px">🎁</div><h1>سحبة</h1><p>مسابقات صنّاع المحتوى الحقيقية. سجّل بحساب جوجل وشارك بضغطة واحدة.</p></div>
+    <button class="btn alt" data-act="login" style="margin-top:36px">تسجيل الدخول بجوجل 🚀</button>`;
     return;
   }
-
-  if (user && !userProfile && currentView === 'avatar_select') {
-    bottomNav.style.display = "none";
-    const avatars = ["🐼", "👧", "👦", "🦖", "🐻", "🤖", "🐰", "🦊", "🦁"];
-    container.innerHTML = `
-      <div class="welcome-hero" style="padding-top:20px">
-        <h2>اختر شخصيتك</h2>
-        <p>اختر شخصية تمثلك داخل تطبيق سحبة</p>
-      </div>
-      <div class="avatar-grid">
-        ${avatars.map(av => `<div class="avatar-option ${selectedAvatar === av ? 'selected' : ''}" onclick="selectAvatar('${av}')">${av}</div>`).join('')}
-      </div>
-      <button class="btn alt" onclick="saveAvatarAndEnter()">متابعة والدخول ←</button>
-    `;
+  if(!profile){
+    nav.style.display="none";
+    m.innerHTML=`<div class="hero" style="padding-top:20px"><h2>اختر شخصيتك</h2><p>هتظهر في حسابك داخل التطبيق</p></div>
+    <div class="avatars">${AVATARS.map(x=>`<div class="av ${x===pick?"on":""}" data-act="av" data-v="${x}">${x}</div>`).join("")}</div>
+    <label>رقم واتساب (بيوصل للمنظم بس لو فزت)</label><input id="ph" type="tel" inputmode="tel" dir="ltr" placeholder="+20 10xxxxxxxx"><button class="btn alt" data-act="saveav">متابعة ←</button>`;
     return;
   }
+  nav.style.display="flex";
+  ["home","wallet","profile"].forEach(k=>$("n-"+k).className=(p===k||(k==="home"&&["raffle","new"].includes(p)))?"on":"");
+  const home=()=>{
+    m.innerHTML=`<div class="top"><div class="brand">🎁 سحبة</div><div style="font-size:14px;color:var(--mu)">أهلاً، ${esc((user.displayName||"").split(" ")[0])}</div></div>
+    ${isOrg?'<a class="btn alt" href="#/new" style="margin:0 0 14px">➕ أضف مسابقة جديدة</a>':""}
+    <div class="search"><input id="q" placeholder="🔍 ابحث باسم صانع المحتوى أو الجائزة" value="${esc(kw)}"></div>
+    <div id="list" class="grid">${listHTML()}</div>`;
+  };
+  if(p==="new"){
+    if(!isOrg)return go("#/home");
+    m.innerHTML=`<a class="btn sm" href="#/home">← رجوع</a><h2 style="color:var(--pr)">مسابقة جديدة</h2>
+    <label>عنوان الجائزة</label><input id="f_t" placeholder="مثلًا: ايفون 16 برو">
+    <label>التفاصيل والشروط</label><textarea id="f_d" rows="3"></textarea>
+    <label>بواسطة (اسم صانع المحتوى)</label><input id="f_b" value="${esc(user.displayName||"")}">
+    <label>رابط الصورة (اختياري، https)</label><input id="f_i" placeholder="https://..." dir="ltr">
+    <label>موعد السحب</label><input id="f_e" type="datetime-local">
+    <button class="btn" data-act="create">نشر المسابقة</button>`;
+  }else if(p==="raffle"){
+    const r=raffles.find(x=>x.id===id);
+    if(!r){m.innerHTML='<a class="btn sm" href="#/home">← رجوع</a><div class="empty">المسابقة غير موجودة</div>';return}
+    const mine=r.ownerUid===user.uid;let act="";
+    if(!isOpen(r)){
+      act=`<div class="win">${r.winnerUid===user.uid?"🎉 مبروك، أنت الفائز!<br>":""}🏆 الفائز: <b>${esc(r.winnerName)}</b><br>كود الفوز: <b dir="ltr">${esc(r.winnerCode)}</b></div>`;
+    }else if(mine){
+      act=isDue(r)?`<button class="btn alt" data-act="draw" data-id="${r.id}">🎲 اسحب الفائز الآن</button>`:`<div class="note">دي مسابقتك. زر السحب هيظهر عند انتهاء الموعد.</div>`;
+    }else if(joined[r.id]){
+      act=`<div class="ticket"><small>كود مشاركتك</small><b>${esc(joined[r.id].code)}</b></div>`;
+    }else if(isDue(r)){
+      act=`<div class="note">انتهى وقت الاشتراك، في انتظار السحب...</div>`;
+    }else act=`<button class="btn alt" data-act="join" data-id="${r.id}">✨ اشترك في السحب</button>`;
+    m.innerHTML=`<a class="btn sm" href="#/home">← رجوع</a><div class="banner">${img(r)}</div>
+    <h2 style="font-size:22px;color:var(--pr)">${esc(r.title)}</h2>
+    <div class="by" style="font-size:14px">بواسطة: ${esc(r.by||r.ownerName)}</div>
+    <p style="margin-top:12px">${esc(r.desc||"بدون تفاصيل إضافية")}</p>
+    <div style="margin-top:12px;font-size:13px;color:var(--mu)">📅 موعد السحب: <b>${esc(fmt(r.endsAt||0))}</b></div>${isOpen(r)?`<div class="note" data-end="${r.endsAt||0}">${left(r.endsAt||0)}</div>`:""}
+    ${act}${mine&&isOpen(r)?'<div class="note" id="pc"></div>':""}${mine&&!isOpen(r)?'<div class="note" id="wc"></div>':""}<button class="btn" data-act="share" data-id="${r.id}">🔗 شارك السحب</button>${mine?`<button class="btn red" data-act="del" data-id="${r.id}">حذف المسابقة</button>`:""}`;
+    if(mine&&isOpen(r))getDocs(collection(db,"raffles",r.id,"entries")).then(x=>{const e=$("pc");if(e)e.textContent="👥 عدد المشاركين: "+x.size}).catch(()=>{});
+    if(mine&&!isOpen(r)&&r.winnerUid)getDoc(doc(db,"raffles",r.id,"entries",r.winnerUid)).then(x=>{const e=$("wc");if(!e||!x.exists())return;const d=x.data(),n=(d.phone||"").replace(/\D/g,"");e.innerHTML=`📞 تواصل مع الفائز: ${n?`<a href="https://wa.me/${n}" target="_blank" rel="noopener"><b>واتساب</b></a> · `:""}<a href="mailto:${esc(d.email)}"><b>إيميل</b></a>`}).catch(()=>{});
+  }else if(p==="wallet"){
+    const map=Object.fromEntries(raffles.map(r=>[r.id,r]));
+    const list=Object.entries(joined).map(([k,v])=>({id:k,...v})).sort((x,y)=>(y.at?.toMillis?.()||0)-(x.at?.toMillis?.()||0));
+    let won=0,wait=0;
+    list.forEach(j=>{const r=map[j.id];if(!r||isOpen(r))wait++;else if(r.winnerUid===user.uid)won++});
+    m.innerHTML=`<h2 style="color:var(--pr);margin-bottom:14px">مشاركاتي</h2>
+    <div class="stats"><div class="stat"><b>${list.length}</b><small>مشاركات</small></div><div class="stat"><b>${won}</b><small>فزت بها</small></div><div class="stat"><b>${wait}</b><small>بانتظار السحب</small></div></div>
+    ${list.map(j=>{const r=map[j.id];let st="⏳ بانتظار السحب";
+      if(!r)st="🗑️ اتحذفت";else if(!isOpen(r))st=r.winnerUid===user.uid?"🎉 فزت!":"❌ مفزتش";
+      const inner=`<div class="ct">${esc(r?.title||j.title)}</div><div class="row"><span>الكود: <b dir="ltr" style="color:var(--pr);font-size:16px">${esc(j.code)}</b></span><span class="badge">${st}</span></div>`;
+      return r?`<a class="card wl" href="#/raffle/${r.id}">${inner}</a>`:`<div class="card wl">${inner}</div>`}).join("")||'<div class="empty">لسه ما اشتركتش في أي مسابقة.</div>'}`;
+  }else if(p==="profile"){
+    const mine=raffles.filter(r=>r.ownerUid===user.uid);
+    m.innerHTML=`<div class="me"><div class="avatar">${esc(profile.avatar||"👤")}</div><h2 style="font-size:18px">${esc(user.displayName)}</h2><div class="by">${esc(user.email)}</div></div>
+    <div class="stats"><div class="stat"><b>${Object.keys(joined).length}</b><small>مشاركاتي</small></div>${isOrg?`<div class="stat"><b>${mine.length}</b><small>مسابقاتي</small></div>`:""}</div>
+    ${isOrg?`<h3 style="font-size:16px;margin:16px 0 8px;color:var(--pr)">مسابقاتي</h3><div class="grid">${mine.map(card).join("")||'<div class="empty">لسه ما أضفتش مسابقات.</div>'}</div>`:""}
+    <button class="btn red" data-act="logout" style="margin-top:24px">تسجيل الخروج</button>`;
+  }else home();
+}
 
-  bottomNav.style.display = "flex";
-  $("navHome").className = (currentView === 'home') ? "on" : "";
-  $("navWallet").className = (currentView === 'wallet') ? "on" : "";
-  $("navProfile").className = (currentView === 'profile') ? "on" : "";
-
-  if (currentView === 'home') {
-    container.innerHTML = `
-      <div class="top">
-        <div class="brand">🎁 سحبة</div>
-        <div style="font-size:14px;color:var(--mu)">أهلاً، ${esc(user.displayName?.split(' ')[0])}</div>
-      </div>
-      <button id="newBtn" class="btn alt" style="display:${(user.email?.toLowerCase() === ADMIN || true) ? 'block' : 'none'};margin-bottom:14px">➕ أضف مسابقة جديدة</button>
-      
-      <div id="panel" class="panel">
-        <h3 style="color:var(--pr)">إضافة مسابقة جديدة</h3>
-        <label>عنوان الجائزة</label>
-        <input id="a_title" placeholder="مثلًا: ايفون 16 برو">
-        <label>التفاصيل والشروط</label>
-        <textarea id="a_desc" rows="2" placeholder="اكتب شروط المشاركة..."></textarea>
-        <label>بواسطة (اسم المنظم / صانع المحتوى)</label>
-        <input id="a_by" placeholder="مثلًا: أحمد التقني">
-        <label>رابط الصورة (اختياري)</label>
-        <input id="a_img" placeholder="https://...">
-        <label>موعد السحب</label>
-        <input id="a_date" type="datetime-local">
-        <button id="addBtn" class="btn" style="margin-top:14px">نشر المسابقة</button>
-      </div>
-
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input placeholder="ابحث عن السحوبات والجوائز..." oninput="filterRaffles(this.value)">
-      </div>
-      <div id="list" class="grid"></div>
-    `;
-    renderHomeContent();
-    setupHomeEvents();
-  } else if (currentView === 'details') {
-    const r = raffles.find(x => x.id === selectedRaffleId);
-    if (!r) { container.innerHTML = '<div class="empty">المسابقة غير موجودة</div>'; return; }
-
-    const open = r.status === "open";
-    const due = Date.now() >= (r.endsAt || 0);
-    const imgTag = /^https:\/\//.test(r.image || "") ? `<img src="${esc(r.image)}" alt="">` : "🎁";
-    let act = "";
-
-    if (!open) {
-      const me = user && r.winnerUid === user.uid;
-      act = `<div class="win-box">${me ? "🎉 مبروك، أنت الفائز بالجائزة!<br>" : ""}🏆 الفائز: <b>${esc(r.winnerName)}</b><br>كود الفوز: <b>${esc(r.winnerCode)}</b></div>`;
-    } else if (user && r.ownerUid === user.uid) {
-      act = due
-        ? `<button class="btn alt" data-draw="${r.id}">🎲 اسحب الفائز الآن</button>`
-        : `<p class="badge done" style="text-align:center;margin-top:12px;width:100%;padding:10px">هذه مسابقتك. سيظهر زر السحب عند انتهاء الموعد.</p>`;
-    } else if (codes[r.id]) {
-      act = `<div class="ticket"><small>رقم كود المشاركة الخاص بك (اعرف رقمك)</small><b>${esc(codes[r.id])}</b></div>`;
-    } else if (due) {
-      act = `<p class="badge done" style="text-align:center;margin-top:12px;width:100%;padding:10px">انتهى وقت الاشتراك، في انتظار السحب...</p>`;
-    } else {
-      act = `<button class="btn alt" data-join="${r.id}">✨ اشترك في السحب الآن</button>`;
+/* ---------- الأحداث (مستمع واحد فقط) ---------- */
+document.addEventListener("click",async e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;
+  const act=b.dataset.act,id=b.dataset.id;
+  if(act==="login"){
+    const pr=new GoogleAuthProvider();
+    try{await signInWithPopup(auth,pr)}catch(err){
+      if(["auth/popup-blocked","auth/operation-not-supported-in-this-environment"].includes(err.code))signInWithRedirect(auth,pr);
+      else if(err.code!=="auth/popup-closed-by-user"&&err.code!=="auth/cancelled-popup-request")toast("تعذر تسجيل الدخول");
     }
-
-    const delBtn = (user && (r.ownerUid === user.uid || user.email?.toLowerCase() === ADMIN)) 
-      ? `<button class="btn red" style="margin-top:12px" data-del="${r.id}">حذف المسابقة نهائياً</button>` : "";
-
-    container.innerHTML = `
-      <button class="btn" style="width:auto;padding:8px 16px;margin-bottom:12px;font-size:13px" onclick="switchView('home')">← رجوع للرئيسية</button>
-      <div class="details-banner">${imgTag}</div>
-      <h2 style="font-size:22px;color:var(--pr)">${esc(r.title)}</h2>
-      <div style="color:var(--mu);font-size:14px;margin-top:4px">بواسطة: ${esc(r.by || r.ownerName)}</div>
-      <p style="margin-top:12px;color:var(--tx);font-size:15px">${esc(r.desc || "بدون تفاصيل إضافية")}</p>
-      <div style="margin-top:12px;font-size:13px;color:var(--mu)">📅 موعد السحب: <b>${esc(fmt(r.endsAt || 0))}</b></div>
-      ${act}
-      ${delBtn}
-    `;
-    setupDetailsEvents();
-  } else if (currentView === 'wallet') {
-    const map = {};
-    raffles.forEach(r => map[r.id] = r);
-    const list = joined.slice().sort((a,b)=>((b.at?.toMillis?.()||0)-(a.at?.toMillis?.()||0)));
-    
-    let won = 0, lost = 0, wait = 0;
-    list.forEach(j => {
-      const r = map[j.id];
-      if (!r || r.status === "open") wait++;
-      else if (r.winnerUid === user.uid) won++;
-      else lost++;
-    });
-
-    container.innerHTML = `
-      <h2 style="font-size:20px;margin-bottom:14px;color:var(--pr)">سجلي ومشاركاتي</h2>
-      <div class="stats">
-        <div class="stat"><b>${list.length}</b><small>مشاركات</small></div>
-        <div class="stat"><b>${won}</b><small>فزت بها</small></div>
-        <div class="stat"><b>${wait}</b><small>بانتظار السحب</small></div>
-      </div>
-      <div id="walletList">
-        ${list.map(j => {
-          const r = map[j.id];
-          let st = "⏳ بانتظار السحب";
-          if (!r) st = "🗑️ حُذفت المسابقة";
-          else if (r.status === "closed") {
-            st = (r.winnerUid === user.uid) ? "🎉 فزت!" : "❌ لم تفز";
-          }
-          return `
-            <div class="card" style="margin-bottom:10px;cursor:default;padding:14px" onclick="if('${r?.id}')openDetails('${r.id}')">
-              <div style="font-weight:700">${esc(r?.title || j.title)}</div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px">
-                <span>الكود: <b style="direction:ltr;color:var(--pr);font-size:16px">${esc(j.code)}</b></span>
-                <span class="badge">${st}</span>
-              </div>
-            </div>
-          `;
-        }).join("") || '<div class="empty">لم تشترك في أي مسابقة بعد. اختر مسابقة واشترك!</div>'}
-      </div>
-    `;
-  } else if (currentView === 'profile') {
-    const mine = raffles.filter(r => r.ownerUid === user.uid);
-    const avatarChar = userProfile?.avatar || "👤";
-
-    container.innerHTML = `
-      <div class="profile-header">
-        <div class="avatar">${avatarChar}</div>
-        <h2 style="font-size:18px">${esc(user.displayName)}</h2>
-        <div style="color:var(--mu);font-size:13px">${esc(user.email)}</div>
-      </div>
-      <div class="stats">
-        <div class="stat"><b>${joined.length}</b><small>مشاركاتي</small></div>
-        <div class="stat"><b>${mine.length}</b><small>مسابقاتي</small></div>
-      </div>
-      <h3 style="font-size:16px;margin:16px 0 8px;color:var(--pr)">مسابقاتي التي أضفتها</h3>
-      <div class="grid" style="margin-bottom:20px">
-        ${mine.length ? mine.map(cardHTML).join("") : '<div class="empty" style="grid-column:1/-1;padding:15px 0">لم تقم بإنشاء مسابقات بعد.</div>'}
-      </div>
-      <button class="btn red" id="logoutBtn" style="margin-top:10px">تسجيل الخروج</button>
-    `;
-    const loBtn = $("logoutBtn");
-    if(loBtn) loBtn.onclick = () => signOut(auth);
-  }
-}
-
-function cardHTML(r) {
-  const open = r.status === "open";
-  const due = Date.now() >= (r.endsAt || 0);
-  const imgTag = /^https:\/\//.test(r.image || "") ? `<img src="${esc(r.image)}" alt="">` : "🎁";
-  
-  return `
-    <div class="card" onclick="openDetails('${r.id}')">
-      <div class="card-img">${imgTag}</div>
-      <div class="card-body">
-        <div class="card-title">${esc(r.title)}</div>
-        <div class="card-by">بواسطة: ${esc(r.by || r.ownerName)}</div>
-        <span class="badge ${open && !due ? '' : 'done'}">${open && !due ? 'سحب نشط' : 'انتهى'}</span>
-      </div>
-    </div>
-  `;
-}
-
-function renderHomeContent() {
-  const listEl = $("list");
-  if (!listEl) return;
-  const filtered = raffles.filter(r => !searchKeyword || r.title.toLowerCase().includes(searchKeyword) || (r.by && r.by.toLowerCase().includes(searchKeyword)));
-  listEl.innerHTML = filtered.length 
-    ? filtered.map(cardHTML).join("") 
-    : '<div class="empty">لا توجد مسابقات مطابقة حالياً 🎈</div>';
-}
-
-function setupHomeEvents() {
-  const newBtn = $("newBtn");
-  const panel = $("panel");
-  const addBtn = $("addBtn");
-  
-  if (newBtn && panel) {
-    newBtn.onclick = () => { panel.style.display = panel.style.display === "block" ? "none" : "block"; };
-  }
-  if (addBtn) {
-    addBtn.onclick = async () => {
-      const title = $("a_title").value.trim();
-      const end = new Date($("a_date").value).getTime();
-      const img = $("a_img").value.trim();
-      if (!title) { alert("يرجى كتابة عنوان الجائزة"); return; }
-      if (!end || end <= Date.now()) { alert("يرجى اختيار موعد سحب صحيح في المستقبل"); return; }
-      
-      try {
-        await addDoc(collection(db, "raffles"), {
-          title,
-          desc: $("a_desc").value.trim(),
-          image: img,
-          by: $("a_by").value.trim() || user.displayName || "",
-          endsAt: end,
-          ownerUid: user.uid,
-          ownerName: user.displayName || "",
-          status: "open",
-          createdAt: serverTimestamp()
-        });
-        ["a_title", "a_desc", "a_by", "a_img", "a_date"].forEach(i => $(i).value = "");
-        panel.style.display = "none";
-        alert("تم نشر المسابقة بنجاح! 🚀");
-      } catch (err) { alert("تعذر النشر، حاول مرة أخرى."); }
-    };
-  }
-}
-
-function setupDetailsEvents() {
-  document.addEventListener("click", async e => {
-    const b = e.target.closest("button");
-    if (!b) return;
-    
-    if (b.dataset.join) {
-      const id = b.dataset.join;
-      const r = raffles.find(x => x.id === id);
-      b.disabled = true;
-      for (let i = 0; i < 6; i++) {
-        const code = String(100000 + rnd() % 900000);
-        try {
-          const batch = writeBatch(db);
-          batch.set(doc(db, "raffles", id, "codes", code), {uid: user.uid});
-          batch.set(doc(db, "raffles", id, "entries", user.uid), {name: user.displayName || "مشارك", email: user.email, code, at: serverTimestamp()});
-          batch.set(doc(db, "users", user.uid, "joined", id), {code, title: r ? r.title : "", at: serverTimestamp()});
-          await batch.commit();
-          alert("تم الاشتراك بنجاح! تم توليد كود المشاركة الخاص بك 🎟️");
-          return;
-        } catch (err) {}
-      }
-      alert("تعذر الاشتراك، ربما انتهى الوقت أو أنت مشترك مسبقاً.");
-      b.disabled = false;
-    } else if (b.dataset.draw) {
-      const id = b.dataset.draw;
-      try {
-        const s = await getDocs(collection(db, "raffles", id, "entries"));
-        if (!s.size) { alert("لا يوجد مشاركون في هذا السحب!"); return; }
-        if (!confirm(`عدد المشاركين: ${s.size}. هل تريد سحب الفائز الآن؟`)) return;
-        const d = s.docs[rnd() % s.size];
-        const w = d.data();
-        await updateDoc(doc(db, "raffles", id), {status: "closed", winnerUid: d.id, winnerName: w.name, winnerCode: w.code, drawnAt: serverTimestamp()});
-        alert("تم السحب بنجاح! 🎉");
-      } catch (err) { alert("حدث خطأ أثناء إجراء السحب."); }
-    } else if (b.dataset.del) {
-      const id = b.dataset.del;
-      if (!confirm("هل أنت متأكد من حذف هذه المسابقة؟")) return;
-      try { 
-        await deleteDoc(doc(db, "raffles", id)); 
-        switchView('home');
-        alert("تم الحذف بنجاح");
-      } catch (err) { alert("تعذر الحذف."); }
+  }else if(act==="share"){const r=raffles.find(x=>x.id===id),d={title:"سحبة: "+(r?.title||""),url:location.href};try{navigator.share?await navigator.share(d):(await navigator.clipboard.writeText(d.url),toast("تم نسخ الرابط"))}catch{}}
+  else if(act==="logout"){await signOut(auth);go("#/home")}
+  else if(act==="av"){pick=b.dataset.v;document.querySelectorAll(".av").forEach(x=>x.classList.toggle("on",x.dataset.v===pick))}
+  else if(act==="saveav"){
+    const ph=($("ph").value||"").replace(/[^\d+]/g,"");if(ph.replace(/\D/g,"").length<8)return toast("اكتب رقم واتساب صحيح");
+    b.disabled=true;
+    try{
+      await setDoc(doc(db,"users",user.uid),{avatar:pick,phone:ph,displayName:user.displayName||"",email:user.email,createdAt:serverTimestamp()},{merge:true});
+      profile={avatar:pick,phone:ph};go("#/home");render(true);
+    }catch{toast("حصل خطأ، جرّب تاني");b.disabled=false}
+  }else if(act==="create"){
+    const title=$("f_t").value.trim(),end=new Date($("f_e").value).getTime();
+    if(!title)return toast("اكتب عنوان الجائزة");
+    if(!end||end<=Date.now())return toast("اختار موعد سحب في المستقبل");
+    b.disabled=true;
+    try{
+      await addDoc(collection(db,"raffles"),{title,desc:$("f_d").value.trim(),image:$("f_i").value.trim(),by:$("f_b").value.trim()||user.displayName||"",endsAt:end,ownerUid:user.uid,ownerName:user.displayName||"",status:"open",createdAt:serverTimestamp()});
+      toast("تم نشر المسابقة 🚀");go("#/home");
+    }catch{toast("تعذر النشر");b.disabled=false}
+  }else if(act==="join"){
+    const r=raffles.find(x=>x.id===id);if(!r||!isOpen(r)||isDue(r))return;
+    b.disabled=true;
+    for(let i=0;i<6;i++){
+      const code=String(100000+rnd()%900000);
+      try{
+        const w=writeBatch(db);
+        w.set(doc(db,"raffles",id,"codes",code),{uid:user.uid});
+        w.set(doc(db,"raffles",id,"entries",user.uid),{name:user.displayName||"مشارك",email:user.email,phone:profile.phone||"",code,at:serverTimestamp()});
+        w.set(doc(db,"users",user.uid,"joined",id),{code,title:r.title,at:serverTimestamp()});
+        await w.commit();toast("تم الاشتراك 🎟️");return;
+      }catch{}
     }
-  }, {once: true});
-}
-
-window.loginWithGoogle = () => {
-  signInWithPopup(auth, new GoogleAuthProvider()).catch(() => alert("تعذر تسجيل الدخول"));
-};
-
-onSnapshot(query(collection(db, "raffles"), orderBy("createdAt", "desc")), s => {
-  raffles = s.docs.map(d => ({id: d.id, ...d.data()}));
-  renderApp();
-});
-
-onAuthStateChanged(auth, async u => {
-  user = u; joined = []; codes = {};
-  if (unsubJoined) { unsubJoined(); unsubJoined = null; }
-  
-  if (!u) {
-    userProfile = null;
-    currentView = "welcome";
-    renderApp();
-  } else {
-    // Check if user has picked an avatar profile
-    const pDoc = await getDoc(doc(db, "users", u.uid));
-    if (pDoc.exists() && pDoc.data().avatar) {
-      userProfile = pDoc.data();
-      if (currentView === "welcome") currentView = "home";
-    } else {
-      currentView = "avatar_select";
-    }
-
-    unsubJoined = onSnapshot(collection(db, "users", u.uid, "joined"), s => {
-      joined = s.docs.map(d => ({id: d.id, ...d.data()}));
-      codes = {};
-      joined.forEach(j => codes[j.id] = j.code);
-      renderApp();
-    }, () => {});
-    renderApp();
+    toast("تعذر الاشتراك، يمكن انتهى الوقت أو أنت مشترك قبل كده");b.disabled=false;
+  }else if(act==="draw"){
+    try{
+      const s=await getDocs(collection(db,"raffles",id,"entries"));
+      if(!s.size)return toast("مفيش مشاركين في السحب ده");
+      if(!confirm(`عدد المشاركين ${s.size}. تسحب الفائز دلوقتي؟`))return;
+      const d=s.docs[rnd()%s.size],w=d.data();
+      await updateDoc(doc(db,"raffles",id),{status:"closed",winnerUid:d.id,winnerName:w.name,winnerCode:w.code,drawnAt:serverTimestamp()});
+      toast("تم السحب 🎉");
+    }catch{toast("حصل خطأ أثناء السحب")}
+  }else if(act==="del"){
+    if(!confirm("متأكد إنك عايز تحذف المسابقة؟"))return;
+    try{await deleteDoc(doc(db,"raffles",id));go("#/home");toast("تم الحذف")}catch{toast("تعذر الحذف")}
   }
 });
+document.addEventListener("input",e=>{
+  if(e.target.id==="q"){kw=e.target.value.trim().toLowerCase();$("list").innerHTML=listHTML()}
+});
+addEventListener("hashchange",()=>{render(true);scrollTo(0,0)});
 
-setInterval(renderApp, 60000);
+/* ---------- البيانات ---------- */
+onSnapshot(query(collection(db,"raffles"),orderBy("createdAt","desc")),s=>{
+  raffles=s.docs.map(d=>({id:d.id,...d.data()}));dataReady=true;render();
+},()=>{dataReady=true;render()});
+
+onAuthStateChanged(auth,async u=>{
+  user=u;joined={};profile=null;isOrg=false;
+  if(unsubJ){unsubJ();unsubJ=null}
+  if(u){
+    try{const p=await getDoc(doc(db,"users",u.uid));if(p.exists()&&p.data().avatar&&p.data().phone)profile=p.data()}catch{}
+    try{isOrg=(await getDoc(doc(db,"organizers",(u.email||"").toLowerCase()))).exists()}catch{}
+    unsubJ=onSnapshot(collection(db,"users",u.uid,"joined"),s=>{
+      joined={};s.docs.forEach(d=>joined[d.id]=d.data());render();
+    },()=>{});
+  }
+  authReady=true;render(true);
+});
+
+setInterval(()=>document.querySelectorAll("[data-end]").forEach(e=>e.textContent=left(+e.dataset.end)),1000);
+setInterval(()=>render(),60000); // يحدّث حالة "انتهى" بدون ما يقاطع الكتابة
 </script>
 </body>
 </html>
-
